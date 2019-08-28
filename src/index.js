@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { history } from './helpers';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
@@ -8,9 +8,9 @@ import { App } from './app';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <Router history={history} basename={'/ui/'}>
+    <HashRouter history={history}>
         <App history={history} />
-    </Router>
+    </HashRouter>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

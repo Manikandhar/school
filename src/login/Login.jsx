@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { authenticationService } from '../services';
-import { history } from '../helpers';
 import { config } from '../config';
 
 class Login extends Component {
     constructor(props) {
         super(props);
+        console.log(props.history);
         this.checkUser();
         this.state = { loaded: true, login: {}, message: null };
         this.handleChange = this.handleChange.bind(this);
@@ -17,7 +17,7 @@ class Login extends Component {
             .then(resp => {
                 if (resp) {
                     config.routes.map((item) => {
-                        if (item.role === authenticationService.currentUserValue.role) history.push(item.home);
+                        if (item.role === authenticationService.currentUserValue.role) this.props.history.push(item.home);
                     });
                 }
             });
@@ -35,7 +35,7 @@ class Login extends Component {
             .then(response => {
                 this.setState({ loaded: true });
                 config.routes.map((item) => {
-                    if (item.role === response.role) history.push(item.home);
+                    if (item.role === response.role) this.props.history.push(item.home);
                 });
             }).catch(err => {
                 console.log(err);

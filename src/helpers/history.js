@@ -1,5 +1,3 @@
 import { createBrowserHistory } from 'history';
 
-export const history = createBrowserHistory({
-    basename: 'ui'
-});
+export const history = createBrowserHistory();
